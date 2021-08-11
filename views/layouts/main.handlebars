@@ -10,19 +10,30 @@
 
 <body>
   <div class="wrapper">
-    <header>
-      <h1>
-        <a href="/">Just Tech News</a>
-      </h1>
-    </header>
-    <main>
-      {{{ body }}}
-    </main>
-    <footer>
-      Thanks for visiting!
-    </footer>
-  </div>
+    <header class="header">
+            
+            <h1 class="welcome"><i class="fab "></i>Welcome to The Tech Blog!</h1>
+            <div>
+                <nav class"nav">
+                    <a class="link" href="/">Home</a>
+                    <a class="link" href="/dashboard">Dashboard</a>
+                    {{#if loggedIn}}
+                    <a class="link" href="/" id="logout">Logout Here</a>
+                    {{else}}
+                    <a class="link" href="/login">Login Here</a>
+                    {{/if}}
+                </nav>
+            </div>
+        </header>
 
+        <main>
+            {{{ body }}}
+        </main>
+    </div>
+
+    {{#if loggedIn}}
+        <script src="/javascript/logout.js"></script>
+    {{/if}}
 </body>
 
 </html>
