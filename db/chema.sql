@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS dashbord;
+
+CREATE DATABASE dashbord;
