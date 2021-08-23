@@ -16,7 +16,7 @@ async function deleteFormHandler(event) {
   });
 
   if (response.ok) {
-    document.location.replace("/dashboard/");
+    document.location.replace("/dashb/");
   } else {
     alert(response.statusText);
   }

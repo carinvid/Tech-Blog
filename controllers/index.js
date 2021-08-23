@@ -6,7 +6,7 @@ const dashboardRoutes = require("./dashb-routes.js");
 
 router.use("/", homeRoutes);
 router.use("/api", apiRoutes);
-router.use("/dashboard", dashboardRoutes);
+router.use("/dashb", dashboardRoutes);
 
 router.get("/login", (req, res) => {
   res.render("login");
