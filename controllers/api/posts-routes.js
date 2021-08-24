@@ -5,23 +5,23 @@ const withAuth = require("../../util/auth");
 
 // get all users
 router.get("/", (req, res) => {
-  console.log("- - - - - - - - - - - - - -");
+  console.log("======================");
   Post.findAll({
     attributes: ["id", "title", "created_at", "post_content"],
     order: [["created_at", "DESC"]],
     include: [
+      {
+        model: User,
+        attributes: ["username"],
+      },
       // Comment model here -- attached username to comment
       {
         model: Comment,
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username", "github"],
+          attributes: ["username"],
         },
-      },
-      {
-        model: User,
-        attributes: ["username", "github"],
       },
     ],
   })
@@ -42,14 +42,14 @@ router.get("/:id", (req, res) => {
       // include comment model here:
       {
         model: User,
-        attributes: ["username", "github"],
+        attributes: ["username"],
       },
       {
         model: Comment,
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username", "github"],
+          attributes: ["username"],
         },
       },
     ],

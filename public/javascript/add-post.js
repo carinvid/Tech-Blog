@@ -18,12 +18,12 @@ async function newFormHandler(event) {
   });
 
   if (response.ok) {
-    document.location.replace("/dashb");
+    document.location.replace("/dashboard");
   } else {
     alert(response.statusText);
   }
 }
 
 document
-  .querySelector(".new-post-form")
+  .querySelector("#new-post-form")
   .addEventListener("submit", newFormHandler);
