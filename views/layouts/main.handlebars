@@ -4,36 +4,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{#if username}}
+  <title>Tech Blog: {{username}}</title>
+  {{else}}
   <title>Tech Blog</title>
+  {{/if}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
-<body>
   <div class="wrapper">
-    <header class="header">
-            
-            <h1 class="welcome"><i class="fab "></i>Welcome to The Tech Blog!</h1>
-            <div>
-                <nav class"nav">
-                    <a class="link" href="/">Home</a>
-                    <a class="link" href="/dashboard">Dashboard</a>
-                    {{#if loggedIn}}
-                    <a class="link" href="/" id="logout">Logout Here</a>
-                    {{else}}
-                    <a class="link" href="/login">Login Here</a>
-                    {{/if}}
-                </nav>
-            </div>
-        </header>
+    <header>
+        
+        <nav class="navbar mt-2">
+            {{#if loggedIn}}
+            <a href="/" class="navbar-item is-hoverable pt-1">Homepage</a>
+            <a href="/dashboard" class="navbar-item is-hoverable pt-1">Dashboard</a>
+            <a href="/dashboard/create/" class="navbar-item is-hoverable pt-1 mr-4">Create Post</a>
+            {{else}}
+            <a href="/" class="navbar-item is-hoverable pt-1">Homepage</a>
+              {{/if}}
+        </nav>
+        {{#if username}}
+        <h1 class="has-text-black px-3 py-3 has-text-weight-bold">Tech Blog: {{username}}</h1>
+        {{else}}
+        <h1 class="has-text-black px-3 py-3 has-text-weight-bold">Tech Blog</h1>
+        {{/if}}
+    </header>
 
-        <main>
+    <main>
             {{{ body }}}
-        </main>
-    </div>
+    </main>
 
-    {{#if loggedIn}}
-        <script src="/javascript/logout.js"></script>
-    {{/if}}
+    <footer class="footer rows pb-2">
+        <div class="row-is-full content has-text-centered">
+            <p>
+            <a href="/">Homepage</a>{{#if loggedIn}} | 
+            <a href="/dashboard/">Dashboard</a> | 
+            <a href="/dashboard/create/">Create New Post</a>
+            {{else}}
+             | <a href="/login/">Login</a>
+            {{/if}}
+            </p>
+        </div>
+        <nav>
+          {{#if loggedIn}}
+          <button id="logout" class="button" style="background-color: rgb(109, 41, 98); color: rgb(121, 110, 110);">Logout</button>
+          {{else}}
+          <a href="/login" class="button" style="background-color: rgb(27, 4, 25); color: rgb(243, 94, 181);">Login</a>
+          {{/if}}
+        </nav>
+      <div class="row-is-full content has-text-centered">
+    <p>
+      <strong>Tech Blog</strong> by <a href="https://github.com/carinvid">Carolina Reedy</a> |  
+       <a href="mailto:carinvid@gmail.com"><i class="far fa-envelope"></i></a>
+    </p>
+  </div>
+    </footer>
+  </div>
+
+{{#if loggedIn}}
+<script src="/javascript/logout.js"></script>
+{{/if}}
 </body>
 
 </html>
