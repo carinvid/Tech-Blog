@@ -26,7 +26,7 @@ router.get("/", (req, res) => {
       const posts = postData.map((post) => post.get({ plain: true }));
       res.render("homepage", {
         posts,
-        logIn: req.session.logIn,
+        loggedIn: req.session.loggedIn,
         username: req.session.username,
       });
     })
@@ -37,7 +37,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  if (req.session.logIn) {
+  if (req.session.loggedIn) {
     res.redirect("/");
     return;
   }
@@ -46,7 +46,7 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-  if (req.session.logIn) {
+  if (req.session.loggedIn) {
     res.redirect("/");
     return;
   }
@@ -87,7 +87,7 @@ router.get("/post/:id", (req, res) => {
       // pass data over to template
       res.render("single-post", {
         post,
-        loggedIn: req.session.logIn,
+        loggedIn: req.session.loggedIn,
         username: req.session.username,
       });
     })

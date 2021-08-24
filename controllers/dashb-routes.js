@@ -26,10 +26,11 @@ router.get("/", withAuth, (req, res) => {
     ],
   })
     .then((postData) => {
+      // serialize data before passing over to template
       const posts = postData.map((post) => post.get({ plain: true }));
       res.render("dashboard", {
         posts,
-        logIn: true,
+        loggedIn: true,
         username: req.session.username,
       });
     })
