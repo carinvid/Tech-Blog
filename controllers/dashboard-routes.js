@@ -118,4 +118,8 @@ router.get("/create/", withAuth, (req, res) => {
     });
 });
 
+router.get("/new", (req, res) => {
+  res.render("add-post");
+});
+
 module.exports = router;
